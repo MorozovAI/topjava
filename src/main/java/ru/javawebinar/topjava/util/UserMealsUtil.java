@@ -34,8 +34,8 @@ public class UserMealsUtil {
         for (UserMeal uM : mealList) {
             int calories = uM.getCalories();
             LocalDate ld = uM.getDateTime().toLocalDate();
-            if (map.containsKey(ld)) map.put(ld, map.get(ld) + calories);
-            else map.put(ld, calories);
+            map.put(ld, map.getOrDefault(ld,0) + calories);
+
 
         }
         for (UserMeal uM : mealList) {
