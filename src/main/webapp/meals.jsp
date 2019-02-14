@@ -13,10 +13,11 @@
 <table border=1>
     <thead>
     <tr>
+        <th>id</th>
         <th>Время еды</th>
         <th>Описание</th>
         <th>Калории</th>
-        <%--<th colspan=2>Action</th>--%>
+        <th colspan=2>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -26,13 +27,14 @@
         <tr>
             <c:choose>
                 <c:when test="${meal.excess}">
-
+                    <td><font color="red"><c:out value="${meal.id}" /></font></td>
                     <td><font color="red"> <c:out value="${fn:replace(meal.dateTime, 'T', ' ')}" /></font></td>
                     <td><font color="red"><c:out value="${meal.description}" /></font></td>
                     <td><font color="red"><c:out value="${meal.calories}" /></font></td>
 
                 </c:when>
                 <c:otherwise>
+                    <td><c:out value="${meal.id}" /></td>
                     <td><c:out value="${fn:replace(meal.dateTime, 'T', ' ')}" /></td>
                     <td><c:out value="${meal.description}" /></td>
                     <td><c:out value="${meal.calories}" /></td>
@@ -40,8 +42,8 @@
             </c:choose>
 
 
-            <%--<td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td>--%>
-         <%--   <td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>--%>
+            <td><a href="meals?action=edit&Id=<c:out value="${meal.id}"/>">Update</a></td>
+            <td><a href="meals?action=delete&Id=<c:out value="${meal.id}"/>">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
