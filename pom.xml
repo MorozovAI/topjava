@@ -40,6 +40,13 @@
 
     <dependencies>
 
+        <!-- jstl-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
         <!-- Logging with SLF4J & LogBack -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -62,6 +69,7 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- web-->
         <dependency>
             <groupId>javaee</groupId>
             <artifactId>javaee-api</artifactId>
