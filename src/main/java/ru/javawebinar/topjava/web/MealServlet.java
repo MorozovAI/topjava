@@ -1,8 +1,6 @@
 package ru.javawebinar.topjava.web;
 
 import org.slf4j.Logger;
-import ru.javawebinar.topjava.model.MealsCRUD;
-import ru.javawebinar.topjava.model.MealsListCRUD;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import javax.servlet.ServletException;
@@ -21,30 +19,39 @@ public class MealServlet extends HttpServlet {
 
     private static final Logger log = getLogger(MealServlet.class);
 
-    MealsCRUD mealsCRUD;
-
-    public MealServlet() {
-        MealsCRUD mealsCRUD = new MealsListCRUD();
-    }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        User user = new User();
+        user.setFirstName(request.getParameter("firstName"));
+        user.setLastName(request.getParameter("lastName"));
+        try {
+            Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dob"));
+            user.setDob(dob);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        user.setEmail(request.getParameter("email"));
+        String userid = request.getParameter("userid");
+        if(userid == null || userid.isEmpty())
+        {
+            dao.addUser(user);
+        }
+        else
+        {
+            user.setUserid(Integer.parseInt(userid));
+            dao.updateUser(user);
+        }
+        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+        request.setAttribute("users", dao.getAllUsers());
+        view.forward(request, response);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         log.debug("forward to meals");
-
-
-        String action = request.getParameter("action");
-
-        if (action.equalsIgnoreCase("delete")) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            mealsCRUD.deleteMeals(id);
-
-            request.setAttribute("meals", MealsUtil.getFilteredWithExcess(mealsCRUD.getAllMeals(), LocalTime.MIN, LocalTime.MAX, 2000));
-            request.getRequestDispatcher("/meals.jsp").forward(request, response);
-        } else         request.getRequestDispatcher("/meals.jsp").forward(request, response);
+        request.setAttribute("meals", MealsUtil.getFilteredWithExcess(MealsUtil.MEALS, LocalTime.MIN, LocalTime.MAX, MealsUtil.CALORIES_PER_DAY));
+        request.getRequestDispatcher("/meals.jsp").forward(request, response);
     }
 }
