@@ -15,19 +15,21 @@
     <title>MEAL</title>
 </head>
 <body>
-<form method="POST" action='meals' name="edit">
-    <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealTo"/>
-    ID : <input type="text" readonly="readonly" name="ID"
-                     value="<c:out value="${meal.id}" />" /> <br />
+
+<jsp:useBean id="meal" type="ru.javawebinar.topjava.model.Meal" scope="request"/>
+<form method="POST" action='meals' >
+
+    ID : <input type="hidden" readonly="readonly" name="ID"
+                value="<c:out value="${meal.id}" />"/> <br/>
     Description : <input
         type="text" name="Description"
-        value="<c:out value="${meal.description}" />" /> <br />
+        value="<c:out value="${meal.description}" />"/> <br/>
     Calories : <input
-        type="text" name="Calories "
-        value="<c:out value="${meal.calories}" />" /> <br />
-    Datetime : <input
-        type="text" name="dob"
-        value="<fmt:formatDate pattern="MM/dd/yyyy" value="${meal.dateTime}" />" /> <br />
+        type="text" name="Calories"
+        value="<c:out value="${meal.calories}" />"/> <br/>
+    Datetime : <input type="datetime-local" value="${meal.dateTime}" name="DateTime" required> <br/>
+    <input
+            type="submit" value="Submit"/>
 </form>
 </body>
 </html>

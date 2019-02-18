@@ -1,5 +1,7 @@
 package ru.javawebinar.topjava.model;
 
+import ru.javawebinar.topjava.util.MealsUtil;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +16,9 @@ public class inMemoryMealsRepository implements MealsRepository {
 
     private Map<Integer, Meal> repository = new HashMap<>();
 
+     {
+        MealsUtil.MEALS.forEach(this::save);
+    }
 
     @Override
     public Meal save(Meal meal) {
@@ -38,7 +43,7 @@ public class inMemoryMealsRepository implements MealsRepository {
     }
 
     @Override
-    public Collection<Meal> getAllMeals() {
+    public Collection<Meal> getAll() {
         return repository.values();
     }
 }
