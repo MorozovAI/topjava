@@ -30,7 +30,7 @@ public class Meal {
         return dateTime;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

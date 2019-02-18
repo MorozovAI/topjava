@@ -19,7 +19,7 @@
 <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.Meal" scope="request"/>
 <form method="POST" action='meals' >
 
-    ID : <input type="hidden" readonly="readonly" name="ID"
+    <input type="hidden" readonly="readonly" name="ID"
                 value="<c:out value="${meal.id}" />"/> <br/>
     Description : <input
         type="text" name="Description"
