@@ -64,6 +64,13 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>javaee</groupId>
             <artifactId>javaee-api</artifactId>
