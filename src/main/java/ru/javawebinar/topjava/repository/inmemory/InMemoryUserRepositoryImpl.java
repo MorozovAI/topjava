@@ -15,6 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class InMemoryUserRepositoryImpl implements UserRepository {
     private static final Logger log = LoggerFactory.getLogger(InMemoryUserRepositoryImpl.class);
 
+
     private Map<Integer, User> repository = new HashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
 
