@@ -12,6 +12,7 @@ import java.util.Collection;
 @Controller
 public class MealRestController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
+
     @Autowired
     private MealService service;
 
@@ -22,7 +23,7 @@ public class MealRestController {
 
 
     public void delete(int userId, int id) {
-        log.info("delete userId{}, iD {}" ,userId,id);
+        log.info("delete userId{}, iD {}", userId, id);
         service.delete(userId, id);
     }
 
@@ -37,5 +38,6 @@ public class MealRestController {
         log.info("GETALL");
         return service.getAll(userId);
     }
+
 
 }

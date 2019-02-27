@@ -11,6 +11,7 @@ import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
 public class MealServiceImpl implements MealService {
+
     private MealRepository repository;
 
     @Autowired
@@ -38,4 +39,6 @@ public class MealServiceImpl implements MealService {
     public Collection<Meal> getAll(int userId) {
         return repository.getAll(userId);
     }
+
+
 }

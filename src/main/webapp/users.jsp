@@ -6,12 +6,11 @@
 <body>
 <h3><a href="index.html">Home</a></h3>
 <h2>Users</h2>
+<h2></h2>
+<h2>Welcome USER #${userId}</h2>
 
-<select>
-    <td><a href="users?userId=1"></a></td><option>user 1</option>
-    <td><a href="users?userId=2"></a></td><option>user 2</option>
-</select>
 
-<a href="meals">MEALS</a>
+
+<a href="meals">View MEALS</a>
 </body>
 </html>

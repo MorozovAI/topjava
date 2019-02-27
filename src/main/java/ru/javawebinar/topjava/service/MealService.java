@@ -12,4 +12,5 @@ public interface MealService {
     Meal get(int userId, int id);
 
     Collection<Meal> getAll(int userId);
-}
+
+    }
